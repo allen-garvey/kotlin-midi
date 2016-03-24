@@ -1,0 +1,10 @@
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+Thumbs.db
+*.zip
+#compiled java classes
+./out/*
+#Intellij files
+**/.idea/workspace.xml 
+**/.idea/tasks.xml
