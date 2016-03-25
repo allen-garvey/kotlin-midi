@@ -25,10 +25,11 @@ open class CountedNoteSet{
                                                             )
 
     fun add(item: String){
-        val count : Int = collection.get(item) ?: 0
-        if(count == 0){
-            return
+        val count: Int = collection.get(item) ?: -1
+        if(count > -1){
+            collection.put(item, count + 1)
         }
-        collection.put(item, count + 1)
+
+
     }
 }
