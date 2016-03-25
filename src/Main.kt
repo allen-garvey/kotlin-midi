@@ -12,8 +12,8 @@ fun main(args: Array<String>) {
     //val player = MidiPlayer()
     //player.play()
     val parser = MidiParser()
-    val midiFileName : String = "/Users/allen/Desktop/test4.mid"
-    println("Midi file format is: " + MidiSystem.getMidiFileFormat(File(midiFileName)) )
+    val midiFileName : String = System.getProperty("user.home") + "/Desktop/test4.mid"
+    println("Midi file format is: " + MidiSystem.getMidiFileFormat(File(midiFileName)).type )
 
     parser.parse(midiFileName)
 }
