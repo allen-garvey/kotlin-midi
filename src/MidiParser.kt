@@ -28,14 +28,12 @@ class MidiParser{
 
             for (track : Track in tracks) {
                 trackNumber++
-                println("Track " + trackNumber + ": size = " + track.size() + "\n")
+                println("Track " + trackNumber + " has " + track.size() + " midi events\n")
                 for (i: Int in 0..track.size() - 1) {
                     val event: MidiEvent = track.get(i)
-                    //print("@" + event.getTick() + " ")
                     val message: MidiMessage = event.getMessage()
                     if (message is ShortMessage) {
                         val sm: ShortMessage = message
-                        print("Channel: " + sm.getChannel() + " ")
                         if (sm.getCommand() == NOTE_ON) {
                             val key: Int = sm.getData1()
                             val octave: Int = (key / 12) - 1
@@ -43,7 +41,7 @@ class MidiParser{
                             val noteName: String = NOTE_NAMES[note]
                             noteSet.add(noteName)
                             val velocity: Int = sm.getData2()
-                            println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
+                            //println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
                         else if (sm.getCommand() == NOTE_OFF) {
                             val key: Int = sm.getData1()
@@ -53,20 +51,11 @@ class MidiParser{
                             val velocity: Int = sm.getData2()
                             //println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
-                        else {
-                            //println("Command:" + sm.getCommand())
-                        }
-                    }
-                    else {
-                        //println("Other message: " + message.toString())
-                        if(message is MetaMessage){
-                            val meta : MetaMessage = message
-                            //println(meta.data[0])
-                        }
+
                     }
 
+
                 }
-                println()
             }
             println(noteSet.collection)
 
