@@ -9,7 +9,7 @@ import javax.sound.midi.*
 
 class MidiPlayer{
 
-    public fun play(){
+    fun play(){
         val channel : Int = 0 // 0 is a piano, 9 is percussion, other channels are for other instruments
         val volume : Int = 80 // between 0 et 127
         val duration : Long = 200 // in milliseconds
