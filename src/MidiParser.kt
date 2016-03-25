@@ -20,28 +20,18 @@ class MidiParser{
 
     //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
     fun parse(fileName : String){
-        try {
             val sequence: Sequence = MidiSystem.getSequence(File(fileName))
             val noteSet : CountedNoteSet = CountedNoteSet()
             var trackNumber: Int = 0
             val tracks : Array<Track> = sequence.tracks
             println("There are " + tracks.size  + " tracks")
 
-           //not iterating over track 2 for some reason
-            val messageTest = tracks[1].get(2).message
-            if(messageTest is ShortMessage){
-                val sm : ShortMessage = messageTest
-                println(sm.data1)
-            }
-
-
             for (track : Track in tracks) {
                 trackNumber++
                 println("Track " + trackNumber + ": size = " + track.size() + "\n")
-                for (i: Int in 0..track.size()) {
-                    println("event " + i + " starting")
+                for (i: Int in 0..track.size() - 1) {
                     val event: MidiEvent = track.get(i)
-                    print("@" + event.getTick() + " ")
+                    //print("@" + event.getTick() + " ")
                     val message: MidiMessage = event.getMessage()
                     if (message is ShortMessage) {
                         val sm: ShortMessage = message
@@ -61,17 +51,17 @@ class MidiParser{
                             val note: Int = key % 12
                             val noteName: String = NOTE_NAMES[note]
                             val velocity: Int = sm.getData2()
-                            println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity)
+                            //println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
                         else {
-                            println("Command:" + sm.getCommand())
+                            //println("Command:" + sm.getCommand())
                         }
                     }
                     else {
-                        println("Other message: " + message.toString())
+                        //println("Other message: " + message.toString())
                         if(message is MetaMessage){
                             val meta : MetaMessage = message
-                            println(meta.data[0])
+                            //println(meta.data[0])
                         }
                     }
 
@@ -79,9 +69,6 @@ class MidiParser{
                 println()
             }
             println(noteSet.collection)
-        }
-        catch(e : Exception){
-            println(e.message)
-        }
+
     }
 }
