@@ -4,7 +4,7 @@ Some explorations using Kotlin with the Java Midi classes
 
 ## Dependencies
 
-* Kotlin 1.0
+* Kotlin 1.0.1
 * Java 1.8
 
 ## License
