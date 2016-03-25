@@ -4,7 +4,7 @@
 Thumbs.db
 *.zip
 #compiled java classes
-out/*
+/out/
 
 # User-specific stuff:
 .idea/workspace.xml
