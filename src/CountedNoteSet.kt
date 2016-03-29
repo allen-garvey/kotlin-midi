@@ -11,25 +11,26 @@ package aged.midi
 
 
 open class CountedNoteSet{
-    val collection : MutableMap<String, Int> = mutableMapOf("A" to 0,
-                                                            "Bb" to 0,
-                                                            "B" to 0,
-                                                            "C" to 0,
-                                                            "C#" to 0,
-                                                            "D" to 0,
-                                                            "Eb" to 0, "E" to 0,
-                                                            "F" to 0,
-                                                            "F#" to 0,
-                                                            "G" to 0,
-                                                            "Ab" to 0
-                                                            )
+    val entriesArray : Array<CountedNoteSetEntry> = arrayOf(
+                                                            CountedNoteSetEntry("C"),
+                                                            CountedNoteSetEntry("C#"),
+                                                            CountedNoteSetEntry("D"),
+                                                            CountedNoteSetEntry("Eb"),
+                                                            CountedNoteSetEntry("E"),
+                                                            CountedNoteSetEntry("F"),
+                                                            CountedNoteSetEntry("F#"),
+                                                            CountedNoteSetEntry("G"),
+                                                            CountedNoteSetEntry("Ab"),
+                                                            CountedNoteSetEntry("A"),
+                                                            CountedNoteSetEntry("Bb"),
+                                                            CountedNoteSetEntry("B")
+                                                          )
 
-    fun add(item: String){
-        val count: Int = collection.get(item) ?: -1
-        if(count > -1){
-            collection.put(item, count + 1)
-        }
-
-
+    fun add(note : MidiNote){
+        //entriesArray[note.note].count = entriesArray[note.note].count + 1
+        entriesArray[note.note].count++
+    }
+    fun sortedCollection() : Array<CountedNoteSetEntry>{
+        return entriesArray.sortedArrayDescending()
     }
 }
