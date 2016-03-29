@@ -6,7 +6,6 @@
 
 package aged.midi
 
-import aged.util.CountedNoteSet
 import java.io.File
 import javax.sound.midi.*
 import  com.sun.media.sound.*
@@ -15,8 +14,6 @@ class MidiParser{
 
     val NOTE_ON : Int = ShortMessage.NOTE_ON
     val NOTE_OFF : Int = ShortMessage.NOTE_OFF
-    val NOTE_NAMES : Array<String> = arrayOf("C", "C#", "D", "Eb", "E", "F", "F#", "G", "Ab", "A", "Bb", "B")
-
 
     //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
     fun parse(fileName : String){
