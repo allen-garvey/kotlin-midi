@@ -33,7 +33,7 @@ class MidiParser{
                         val sm: ShortMessage = message
                         if (sm.getCommand() == NOTE_ON) {
                             val midiNote = MidiNote(sm)
-                            noteSet.add(midiNote.noteName)
+                            noteSet.add(midiNote)
                             //println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
                         else if (sm.getCommand() == NOTE_OFF) {
@@ -46,7 +46,11 @@ class MidiParser{
 
                 }
             }
-            println(noteSet.collection)
+            val sortedNoteCollection = noteSet.sortedCollection()
+            for(noteSetEntry : CountedNoteSetEntry in sortedNoteCollection){
+                println(noteSetEntry)
+            }
+            println(noteSet.sortedCollection())
 
     }
 }
