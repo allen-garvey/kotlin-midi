@@ -35,20 +35,12 @@ class MidiParser{
                     if (message is ShortMessage) {
                         val sm: ShortMessage = message
                         if (sm.getCommand() == NOTE_ON) {
-                            val key: Int = sm.getData1()
-                            val octave: Int = (key / 12) - 1
-                            val note: Int = key % 12
-                            val noteName: String = NOTE_NAMES[note]
-                            noteSet.add(noteName)
-                            val velocity: Int = sm.getData2()
+                            val midiNote = MidiNote(sm)
+                            noteSet.add(midiNote.noteName)
                             //println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
                         else if (sm.getCommand() == NOTE_OFF) {
-                            val key: Int = sm.getData1()
-                            val octave: Int = (key / 12) - 1
-                            val note: Int = key % 12
-                            val noteName: String = NOTE_NAMES[note]
-                            val velocity: Int = sm.getData2()
+                            val midiNote = MidiNote(sm)
                             //println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
 
