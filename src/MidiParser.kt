@@ -50,7 +50,12 @@ class MidiParser{
             for(noteSetEntry : CountedNoteSetEntry in sortedNoteCollection){
                 println(noteSetEntry)
             }
-            
+            println("\nNormalized collection ")
+            val normalizedSortedNoteCollection = noteSet.normalizedSortedCollection()
+            for(noteSetEntry2 : CountedNoteSetEntry in normalizedSortedNoteCollection){
+               println(noteSetEntry2)
+            }
+
 
     }
 }
