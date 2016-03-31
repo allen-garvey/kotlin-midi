@@ -12,22 +12,21 @@ package aged.midi
 
 open class CountedNoteSet{
     val entriesArray : Array<CountedNoteSetEntry> = arrayOf(
-                                                            CountedNoteSetEntry("C"),
-                                                            CountedNoteSetEntry("C#"),
-                                                            CountedNoteSetEntry("D"),
-                                                            CountedNoteSetEntry("Eb"),
-                                                            CountedNoteSetEntry("E"),
-                                                            CountedNoteSetEntry("F"),
-                                                            CountedNoteSetEntry("F#"),
-                                                            CountedNoteSetEntry("G"),
-                                                            CountedNoteSetEntry("Ab"),
-                                                            CountedNoteSetEntry("A"),
-                                                            CountedNoteSetEntry("Bb"),
-                                                            CountedNoteSetEntry("B")
+                                                            CountedNoteSetEntry(MidiNote(0)),
+                                                            CountedNoteSetEntry(MidiNote(1)),
+                                                            CountedNoteSetEntry(MidiNote(2)),
+                                                            CountedNoteSetEntry(MidiNote(3)),
+                                                            CountedNoteSetEntry(MidiNote(4)),
+                                                            CountedNoteSetEntry(MidiNote(5)),
+                                                            CountedNoteSetEntry(MidiNote(6)),
+                                                            CountedNoteSetEntry(MidiNote(7)),
+                                                            CountedNoteSetEntry(MidiNote(8)),
+                                                            CountedNoteSetEntry(MidiNote(9)),
+                                                            CountedNoteSetEntry(MidiNote(10)),
+                                                            CountedNoteSetEntry(MidiNote(11))
                                                           )
 
     fun add(note : MidiNote){
-        //entriesArray[note.note].count = entriesArray[note.note].count + 1
         entriesArray[note.note].count++
     }
     fun sortedCollection() : Array<CountedNoteSetEntry>{

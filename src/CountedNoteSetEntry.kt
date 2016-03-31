@@ -4,9 +4,10 @@
 
 package aged.midi
 
-class CountedNoteSetEntry(val noteName : String, var count : Int = 0) : Comparable<CountedNoteSetEntry>{
+class CountedNoteSetEntry(val note: MidiNote, var count : Int = 0) : Comparable<CountedNoteSetEntry>{
 
     override fun toString() : String{
+        val noteName = note.noteName
         return "$noteName: $count"
     }
 
@@ -16,7 +17,7 @@ class CountedNoteSetEntry(val noteName : String, var count : Int = 0) : Comparab
 
     override fun equals(other : Any?) : Boolean{
         if(other is CountedNoteSetEntry){
-            return noteName.equals(other.noteName)
+            return note.note.equals(other.note.note)
         }
         return false
     }
