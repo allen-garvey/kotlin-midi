@@ -19,4 +19,7 @@ class MidiNote(var keyNum : Int, val velocity : Int = 60){
     constructor(sm : ShortMessage) : this(sm.data1, sm.data2){
 
     }
+    fun transpose(amount : Int){
+        keyNum += amount
+    }
 }
