@@ -12,7 +12,10 @@ class MidiNote(var keyNum : Int, val velocity : Int = 60){
     val octave: Int
         get() = (keyNum / 12) - 1
     val note: Int
-        get() = Math.abs(keyNum % 12)
+        get(){
+            val normalizedKeyNum = if(keyNum < 0)  (keyNum % 12) + 12 else keyNum
+            return Math.abs(normalizedKeyNum % 12)
+        }
     val noteName: String
         get() = NOTE_NAMES[note]
 
