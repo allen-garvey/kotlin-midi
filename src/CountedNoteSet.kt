@@ -11,7 +11,7 @@ package aged.midi
 
 
 open class CountedNoteSet{
-    val entriesArray : Array<CountedNoteSetEntry> = arrayOf(
+    val entriesList: List<CountedNoteSetEntry> = listOf(
                                                             CountedNoteSetEntry(MidiNote(0)),
                                                             CountedNoteSetEntry(MidiNote(1)),
                                                             CountedNoteSetEntry(MidiNote(2)),
@@ -26,11 +26,23 @@ open class CountedNoteSet{
                                                             CountedNoteSetEntry(MidiNote(11))
                                                           )
 
-    val sortedCollection : Array<CountedNoteSetEntry>
-        get() = entriesArray.sortedArrayDescending()
+    val sortedCollection : List<CountedNoteSetEntry>
+        get() = entriesList.sortedDescending()
+
+    //returns sorted collection with the base of the first note transposed
+    //i.e. transpose so the first note starts on C
+    fun normalizedSortedCollection(base : Int = 0) : List<CountedNoteSetEntry>{
+        val normalizedBase : Int = base % 12
+        val diff = normalizedBase - entriesList[0].note.note
+        if(diff == 0){
+            return sortedCollection
+        }
+        return sortedCollection.map { it -> it.note.transpose(diff); it }
+
+    }
 
     fun add(note : MidiNote){
-        entriesArray[note.note].count++
+        entriesList[note.note].count++
     }
 
 }
