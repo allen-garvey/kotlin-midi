@@ -32,8 +32,9 @@ open class CountedNoteSet{
     //returns sorted collection with the base of the first note transposed
     //i.e. transpose so the first note starts on C
     fun normalizedSortedCollection(base : Int = 0) : List<CountedNoteSetEntry>{
+        val sortedCollection = sortedCollection
         val normalizedBase : Int = base % 12
-        val diff = normalizedBase - entriesList[0].note.note
+        val diff = normalizedBase - sortedCollection[0].note.note
         if(diff == 0){
             return sortedCollection
         }
