@@ -26,10 +26,11 @@ open class CountedNoteSet{
                                                             CountedNoteSetEntry(MidiNote(11))
                                                           )
 
+    val sortedCollection : Array<CountedNoteSetEntry>
+        get() = entriesArray.sortedArrayDescending()
+
     fun add(note : MidiNote){
         entriesArray[note.note].count++
     }
-    fun sortedCollection() : Array<CountedNoteSetEntry>{
-        return entriesArray.sortedArrayDescending()
-    }
+
 }

@@ -46,11 +46,11 @@ class MidiParser{
 
                 }
             }
-            val sortedNoteCollection = noteSet.sortedCollection()
+            val sortedNoteCollection = noteSet.sortedCollection
             for(noteSetEntry : CountedNoteSetEntry in sortedNoteCollection){
                 println(noteSetEntry)
             }
-            println(noteSet.sortedCollection())
+            
 
     }
 }
