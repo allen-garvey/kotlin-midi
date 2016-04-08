@@ -12,6 +12,7 @@ class StatisticMidiParserListener : ParserListener{
     var measures : Int = 0
     var numNotes : Int = 0
     var numChords : Int = 0
+    var numTempoChanges : Int = 0
 
     override fun beforeParsingStarts(){
 
@@ -34,7 +35,7 @@ class StatisticMidiParserListener : ParserListener{
     }
 
     override fun onTempoChanged(var1 : Int){
-
+        numTempoChanges++
     }
 
     override fun onKeySignatureParsed(var1 : Byte, var2 : Byte){

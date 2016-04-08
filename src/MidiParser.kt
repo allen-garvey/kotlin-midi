@@ -18,6 +18,11 @@ class MidiParser{
     //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
     fun parse(fileName : String){
             val sequence: Sequence = MidiSystem.getSequence(File(fileName))
+
+            if(sequence.divisionType == Sequence.PPQ){
+                println("Sequence timing is PPQ")
+                println("Resolution is " + sequence.resolution + " ticks per quarter")
+            }
             val noteSet : CountedNoteSet = CountedNoteSet()
             var trackNumber: Int = 0
             val tracks : Array<Track> = sequence.tracks
@@ -34,6 +39,7 @@ class MidiParser{
                         if (sm.getCommand() == NOTE_ON) {
                             val midiNote = MidiNote(sm)
                             noteSet.add(midiNote)
+                            println(midiNote.toString() + " started at " + event.tick + " ticks")
                             //println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                         }
                         else if (sm.getCommand() == NOTE_OFF) {

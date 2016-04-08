@@ -18,14 +18,16 @@ import org.jfugue.parser.*
 fun main(args: Array<String>) {
     val start = System.currentTimeMillis()
 
-    /*
-    val parser = MidiParser()
-    val midiFileName : String = System.getProperty("user.home") + "/Desktop/test.mid"
+
+    val parser : aged.midi.MidiParser = aged.midi.MidiParser()
+    val midiFileName : String = System.getProperty("user.home") + "/Desktop/test4.mid"
     println("Midi file format is: " + MidiSystem.getMidiFileFormat(File(midiFileName)).type )
     parser.parse(midiFileName)
-    */
 
-    val midiFile : File = File(System.getProperty("user.home") + "/Desktop/test.mid")
+
+
+    /*
+    val midiFile : File = File(System.getProperty("user.home") + "/Desktop/test4.mid")
     val pattern = MidiFileManager.loadPatternFromMidi(midiFile)
     println(pattern)
 
@@ -37,9 +39,11 @@ fun main(args: Array<String>) {
     println("Number of measures is: " + listener.measures)
     println("Number of notes is: " + listener.numNotes)
     println("Number of chords is: " + listener.numChords)
-
+    println("Number of tempo changes is: " + listener.numTempoChanges)
+    */
 
 
     val end = System.currentTimeMillis()
     println("Program time: " + (end  - start) + " milliseconds")
+
 }
