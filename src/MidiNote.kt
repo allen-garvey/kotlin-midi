@@ -25,4 +25,8 @@ class MidiNote(var keyNum : Int, val velocity : Int = 60){
     fun transpose(amount : Int){
         keyNum += amount
     }
+
+    override fun toString() : String{
+        return noteName
+    }
 }
