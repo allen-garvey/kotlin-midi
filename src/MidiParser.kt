@@ -14,6 +14,7 @@ class MidiParser{
 
     val NOTE_ON : Int = ShortMessage.NOTE_ON
     val NOTE_OFF : Int = ShortMessage.NOTE_OFF
+    var META_MESSAGE_TIME_SIGNATURE : Int = 0x58
 
     //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
     fun parse(fileName : String){
@@ -48,6 +49,10 @@ class MidiParser{
                         }
 
                     }
+                    else if(message is MetaMessage){
+                        val timeSignature : TimeSignature? = decodeTimeSignature(message)
+                        if(timeSignature is TimeSignature) println(timeSignature)
+                    }
 
 
                 }
@@ -63,5 +68,15 @@ class MidiParser{
             }
 
 
+    }
+
+    fun decodeTimeSignature(message : MetaMessage) : TimeSignature?{
+        val messageData : ByteArray = message.data
+        if(message.type == META_MESSAGE_TIME_SIGNATURE){
+            val numerator : Int =  messageData[0].toInt()
+            val denominator : Int =  Math.pow(2.0, messageData[1].toDouble()).toInt()
+            return TimeSignature(numerator, denominator)
+        }
+        return null
     }
 }
