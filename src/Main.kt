@@ -12,7 +12,7 @@ import org.jfugue.pattern.*
 import org.jfugue.player.*
 import org.staccato.*
 import org.jfugue.parser.*
-
+import java.util.*
 
 
 fun main(args: Array<String>) {
@@ -23,8 +23,6 @@ fun main(args: Array<String>) {
     val midiFileName : String = System.getProperty("user.home") + "/Desktop/test4.mid"
     println("Midi file format is: " + MidiSystem.getMidiFileFormat(File(midiFileName)).type )
     parser.parse(midiFileName)
-
-
 
     /*
     val midiFile : File = File(System.getProperty("user.home") + "/Desktop/test4.mid")
