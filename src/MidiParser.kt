@@ -12,8 +12,6 @@ import  com.sun.media.sound.*
 
 class MidiParser{
 
-    val NOTE_ON : Int = ShortMessage.NOTE_ON
-    val NOTE_OFF : Int = ShortMessage.NOTE_OFF
     val META_MESSAGE_TIME_SIGNATURE : Int = 0x58
 
     fun parse(midiFile : File){
@@ -40,13 +38,13 @@ class MidiParser{
                 val message: MidiMessage = event.getMessage()
                 if (message is ShortMessage) {
                     val sm: ShortMessage = message
-                    if (sm.getCommand() == NOTE_ON) {
+                    if (sm.getCommand() == ShortMessage.NOTE_ON) {
                         val midiNote = MidiNote(sm)
                         noteSet.add(midiNote)
                         println(midiNote.toString() + " started at " + event.tick + " ticks")
                         //println("Note on, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                     }
-                    else if (sm.getCommand() == NOTE_OFF) {
+                    else if (sm.getCommand() == ShortMessage.NOTE_OFF) {
                         val midiNote = MidiNote(sm)
                         //println("Note off, " + noteName + octave + " key=" + key + " velocity: " + velocity)
                     }
