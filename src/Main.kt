@@ -21,8 +21,9 @@ fun main(args: Array<String>) {
 
     val parser : aged.midi.MidiParser = aged.midi.MidiParser()
     val midiFileName : String = System.getProperty("user.home") + "/Desktop/test4.mid"
-    println("Midi file format is: " + MidiSystem.getMidiFileFormat(File(midiFileName)).type )
-    parser.parse(midiFileName)
+    val midiFile : File = File(midiFileName)
+    println("Midi file format is: " + MidiSystem.getMidiFileFormat(midiFile).type )
+    parser.parse(midiFile)
 
     /*
     val midiFile : File = File(System.getProperty("user.home") + "/Desktop/test4.mid")

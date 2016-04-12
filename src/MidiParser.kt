@@ -16,10 +16,13 @@ class MidiParser{
     val NOTE_OFF : Int = ShortMessage.NOTE_OFF
     var META_MESSAGE_TIME_SIGNATURE : Int = 0x58
 
-    //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
-    fun parse(fileName : String){
-            val sequence: Sequence = MidiSystem.getSequence(File(fileName))
+    fun parse(midiFile : File){
+        parse(MidiSystem.getSequence(midiFile))
+    }
 
+
+    //adapted from: http://stackoverflow.com/questions/3850688/reading-midi-files-in-java
+    fun parse(sequence : Sequence){
             if(sequence.divisionType == Sequence.PPQ){
                 println("Sequence timing is PPQ")
                 println("Resolution is " + sequence.resolution + " ticks per quarter")
