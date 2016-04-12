@@ -14,7 +14,7 @@ class MidiParser{
 
     val NOTE_ON : Int = ShortMessage.NOTE_ON
     val NOTE_OFF : Int = ShortMessage.NOTE_OFF
-    var META_MESSAGE_TIME_SIGNATURE : Int = 0x58
+    val META_MESSAGE_TIME_SIGNATURE : Int = 0x58
 
     fun parse(midiFile : File){
         parse(MidiSystem.getSequence(midiFile))
